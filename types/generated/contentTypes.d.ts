@@ -362,36 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiEmailListEmailList extends Schema.SingleType {
-  collectionName: 'email_lists';
-  info: {
-    singularName: 'email-list';
-    pluralName: 'email-lists';
-    displayName: 'Email List';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::email-list.email-list',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::email-list.email-list',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -818,6 +788,337 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
+  info: {
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'Blog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blogTitle: Attribute.String & Attribute.Required;
+    img: Attribute.Media & Attribute.Required;
+    slug: Attribute.UID;
+    category: Attribute.Relation<
+      'api::blog.blog',
+      'oneToOne',
+      'api::category.category'
+    >;
+    summary: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCryptoCrypto extends Schema.CollectionType {
+  collectionName: 'cryptos';
+  info: {
+    singularName: 'crypto';
+    pluralName: 'cryptos';
+    displayName: 'Crypto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::crypto.crypto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::crypto.crypto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEmailEmail extends Schema.CollectionType {
+  collectionName: 'emails';
+  info: {
+    singularName: 'email';
+    pluralName: 'emails';
+    displayName: 'Email';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email.email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email.email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEmailListEmailList extends Schema.SingleType {
+  collectionName: 'email_lists';
+  info: {
+    singularName: 'email-list';
+    pluralName: 'email-lists';
+    displayName: 'Email List';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email-list.email-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email-list.email-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExchangeExchange extends Schema.CollectionType {
+  collectionName: 'exchanges';
+  info: {
+    singularName: 'exchange';
+    pluralName: 'exchanges';
+    displayName: 'Exchange';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    crypto: Attribute.Relation<
+      'api::exchange.exchange',
+      'oneToOne',
+      'api::crypto.crypto'
+    >;
+    exchange_time: Attribute.Relation<
+      'api::exchange.exchange',
+      'oneToOne',
+      'api::exchange-time.exchange-time'
+    >;
+    fiat: Attribute.Relation<
+      'api::exchange.exchange',
+      'oneToOne',
+      'api::fiat.fiat'
+    >;
+    network: Attribute.Relation<
+      'api::exchange.exchange',
+      'oneToOne',
+      'api::network.network'
+    >;
+    rate: Attribute.Relation<
+      'api::exchange.exchange',
+      'oneToOne',
+      'api::rate.rate'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::exchange.exchange',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::exchange.exchange',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExchangeTimeExchangeTime extends Schema.CollectionType {
+  collectionName: 'exchange_times';
+  info: {
+    singularName: 'exchange-time';
+    pluralName: 'exchange-times';
+    displayName: 'ExchangeTime';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    exchangeTime: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::exchange-time.exchange-time',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::exchange-time.exchange-time',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFaqFaq extends Schema.CollectionType {
+  collectionName: 'faqs';
+  info: {
+    singularName: 'faq';
+    pluralName: 'faqs';
+    displayName: 'FAQ';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question: Attribute.Text & Attribute.Required;
+    answer: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFiatFiat extends Schema.CollectionType {
+  collectionName: 'fiats';
+  info: {
+    singularName: 'fiat';
+    pluralName: 'fiats';
+    displayName: 'Fiat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::fiat.fiat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::fiat.fiat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNetworkNetwork extends Schema.CollectionType {
+  collectionName: 'networks';
+  info: {
+    singularName: 'network';
+    pluralName: 'networks';
+    displayName: 'Network';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    network: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::network.network',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::network.network',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRateRate extends Schema.CollectionType {
+  collectionName: 'rates';
+  info: {
+    singularName: 'rate';
+    pluralName: 'rates';
+    displayName: 'Rate';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rate: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::rate.rate', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::rate.rate', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -828,7 +1129,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::email-list.email-list': ApiEmailListEmailList;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -837,6 +1137,17 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::blog.blog': ApiBlogBlog;
+      'api::category.category': ApiCategoryCategory;
+      'api::crypto.crypto': ApiCryptoCrypto;
+      'api::email.email': ApiEmailEmail;
+      'api::email-list.email-list': ApiEmailListEmailList;
+      'api::exchange.exchange': ApiExchangeExchange;
+      'api::exchange-time.exchange-time': ApiExchangeTimeExchangeTime;
+      'api::faq.faq': ApiFaqFaq;
+      'api::fiat.fiat': ApiFiatFiat;
+      'api::network.network': ApiNetworkNetwork;
+      'api::rate.rate': ApiRateRate;
     }
   }
 }

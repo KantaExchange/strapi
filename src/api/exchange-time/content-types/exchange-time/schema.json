@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exchange_times",
+  "info": {
+    "singularName": "exchange-time",
+    "pluralName": "exchange-times",
+    "displayName": "ExchangeTime"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "exchangeTime": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fiats",
+  "info": {
+    "singularName": "fiat",
+    "pluralName": "fiats",
+    "displayName": "Fiat"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

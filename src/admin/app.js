@@ -1,4 +1,4 @@
-import Logo from "../../kanta.png";
+import Logo from "./kanta.png";
 import favicon from "../../favicon.png";
 
 export default {

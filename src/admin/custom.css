@@ -1,0 +1,24 @@
+/* Primary Button */
+button[type="submit"],
+.c1btn-primary {
+    background-color: #7FBE08 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #7FBE08 !important;
+}
+
+button[type="submit"]:hover,
+.c1btn-primary:hover {
+    background-color: #65A807 !important;
+    border: 1px solid #65A807 !important;
+}
+
+/* Secondary Button */
+.c1btn-secondary {
+    background-color: #F8F9FA !important;
+    color: #7FBE08 !important;
+    border: 1px solid #D9D9D9 !important;
+}
+
+.c1btn-secondary:hover {
+    background-color: #EDEDED !important;
+}
